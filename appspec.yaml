@@ -1,0 +1,9 @@
+version: 0.0
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:17699131020:task-definition/simple-node-app"
+        LoadBalancerInfo:
+          ContainerName: "simple-node-app"
+          ContainerPort: 80
