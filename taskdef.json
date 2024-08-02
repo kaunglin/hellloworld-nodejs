@@ -1,0 +1,43 @@
+{
+    "family": "simple-node-app",
+    "containerDefinitions": [
+        {
+            "name": "simple-node-app",
+            "image": "002801621502.dkr.ecr.ap-southeast-1.amazonaws.com/simple-node-app:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "simple-node-app-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/node-app",
+                    "awslogs-create-group": "true",
+                    "awslogs-region": "ap-southeast-1",
+                    "awslogs-stream-prefix": "ecs"
+                }
+            },
+            "systemControls": []
+        }
+    ],
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "512",
+    "memory": "1024",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    }
+}
