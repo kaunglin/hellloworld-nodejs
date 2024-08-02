@@ -5,5 +5,5 @@ Resources:
       Properties:
         TaskDefinition: "arn:aws:ecs:ap-southeast-1:002801621502:task-definition/rida-service-staging"
         LoadBalancerInfo:
-          ContainerName: "rida-service"
+          ContainerName: "rida-service-staging"
           ContainerPort: 80
