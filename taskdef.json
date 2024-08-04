@@ -1,10 +1,8 @@
 {
     "containerDefinitions": [
         {
-            "name": "rida-service-staging",
-            "image": "002801621502.dkr.ecr.ap-southeast-1.amazonaws.com/simple-node-app:latest",
-            "cpu": 1024,
-            "memory": 2048,
+            "name": "simple-node-app",
+            "image": "176991310202.dkr.ecr.us-east-1.amazonaws.com/simple-node-app:latest",
             "portMappings": [
                 {
                     "name": "http",
@@ -38,7 +36,7 @@
             "systemControls": []
         }
     ],
-    "family": "rida-service-staging",
+    "family": "simple-node-app",
     "networkMode": "awsvpc",
     "volumes": [],
     "status": "ACTIVE",
