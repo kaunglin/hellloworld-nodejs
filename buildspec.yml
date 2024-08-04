@@ -21,12 +21,17 @@ phases:
       - docker build -t $REPOSITORY_URI:$IMAGE_TAG .
       - echo Tagging the image as latest...
       - docker tag $REPOSITORY_URI:$IMAGE_TAG $REPOSITORY_URI:latest
-  post_build:
-    commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - docker push $REPOSITORY_URI:latest     
+      - docker push $REPOSITORY_URI:latest  
+  post_build:
+    commands:
+      - echo Updating task definition...
+      - sed -i 's|<IMAGE_PLACEHOLDER>|176991310202.dkr.ecr.us-east-1.amazonaws.com/simple-node-app:latest|g' taskdef.json
+      - aws ecs register-task-definition --cli-input-json file://taskdef.json
+      - export TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition simple-node-app | jq -r '.taskDefinition.taskDefinitionArn')
+      - echo $TASK_DEFINITION
 artifacts:
   files:
     - appspec.yaml
