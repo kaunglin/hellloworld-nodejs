@@ -32,7 +32,7 @@ phases:
     commands:
       - echo Updating task definition...
       - aws ecs describe-task-definition --task-definition simple-node-app --region ap-southeast-1 | jq .taskDefinition > taskdef.json
-      - envsubst < deployment/appspec_template.yaml > appspec.yaml
+      - envsubst < appspec_template.yaml > appspec.yaml
 artifacts:
   files:
     - appspec.yaml
