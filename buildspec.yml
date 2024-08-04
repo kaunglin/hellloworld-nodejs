@@ -28,7 +28,7 @@ phases:
   post_build:
     commands:
       - echo Updating task definition...
-      - sed -i 's|<IMAGE_PLACEHOLDER>|176991310202.dkr.ecr.us-east-1.amazonaws.com/simple-node-app:latest|g' taskdef.json
+      - awk '{gsub(/<IMAGE_PLACEHOLDER>/, "176991310202.dkr.ecr.us-east-1.amazonaws.com/simple-node-app:latest"); print}' taskdef.json > taskdef.tmp && mv taskdef.tmp taskdef.json
       - aws ecs register-task-definition --cli-input-json file://taskdef.json
       - export TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition simple-node-app | jq -r '.taskDefinition.taskDefinitionArn')
       - echo $TASK_DEFINITION
