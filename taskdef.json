@@ -2,7 +2,7 @@
     "containerDefinitions": [
         {
             "name": "simple-node-app",
-            "image": "176991310202.dkr.ecr.us-east-1.amazonaws.com/simple-node-app:latest",
+            "image": "<IMAGE_PLACEHOLDER>",
             "portMappings": [
                 {
                     "name": "http",
