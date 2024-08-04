@@ -33,7 +33,7 @@ phases:
       - echo Updating task definition...
       - aws ecs describe-task-definition --task-definition simple-node-app --region ap-southeast-1 | jq .taskDefinition > taskdef.json
       - TASK_DEFINITION_ARN=$(aws ecs describe-task-definition --task-definition simple-node-app --region ap-southeast-1 | jq -r '.taskDefinition.taskDefinitionArn')
-      - sed -i "s|<TASK_DEFINITION>|$TASK_DEFINITION_ARN|g" appspec_template.yaml > appspec.yaml
+      - sed -i "s|<TASK_DEFINITION>|$TASK_DEFINITION_ARN|g" appspec.yaml
       - cat appspec.yaml
 artifacts:
   files:
