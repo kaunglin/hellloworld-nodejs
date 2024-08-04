@@ -3,7 +3,11 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:ap-southeast-1:176991310202:task-definition/simple-node-app"
+        TaskDefinition: <TASK_DEFINITION>
         LoadBalancerInfo:
           ContainerName: "simple-node-app"
           ContainerPort: 80
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets: ["subnet-0edf886e1f7671894","subnet-0267966a97704f542"]
+            SecurityGroups: ["sg-0929f1b05e681b6d3"]

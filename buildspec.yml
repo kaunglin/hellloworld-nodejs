@@ -5,6 +5,8 @@ phases:
     runtime-versions:
       nodejs: 12
     commands:
+      - apt-get update
+      - apt install jq
       - echo Installing source NPM dependencies...
       - cd simple-node-app
       - npm install
@@ -31,12 +33,9 @@ phases:
       - echo list
       - ls -l
       - echo Updating task definition...
-      - awk '{gsub(/<IMAGE_PLACEHOLDER>/, "176991310202.dkr.ecr.ap-southeast-1.amazonaws.com/simple-node-app:latest"); print}' taskdef.json > taskdef.tmp && mv taskdef.tmp taskdef.json
-      - aws ecs register-task-definition --cli-input-json file://taskdef.json
-      - export TASK_DEFINITION=$(aws ecs describe-task-definition --task-definition simple-node-app | jq -r '.taskDefinition.taskDefinitionArn')
+      - aws ecs describe-task-definition --task-definition simple-nodea-app --region ap-southeast-1 | jq .taskDefinition > taskdef.json
       - echo $TASK_DEFINITION
 artifacts:
   files:
     - appspec.yaml
     - taskdef.json
-  discard-paths: yes
