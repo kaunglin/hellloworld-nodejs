@@ -3,7 +3,7 @@ Resources:
   - TargetService:
       Type: AWS::ECS::Service
       Properties:
-        TaskDefinition: "arn:aws:ecs:ap-southeast-1:002801621502:task-definition/rida-service-staging"
+        TaskDefinition: "arn:aws:ecs:ap-southeast-1:176991310202:task-definition/simple-node-app"
         LoadBalancerInfo:
-          ContainerName: "rida-service-staging"
+          ContainerName: "simple-node-app"
           ContainerPort: 80
