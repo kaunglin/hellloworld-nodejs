@@ -39,12 +39,7 @@
     "family": "simple-node-app",
     "networkMode": "awsvpc",
     "volumes": [],
-    "status": "ACTIVE",
     "placementConstraints": [],
-    "compatibilities": [
-        "EC2",
-        "FARGATE"
-    ],
     "requiresCompatibilities": [
         "EC2"
     ],
