@@ -27,6 +27,8 @@ phases:
       - docker push $REPOSITORY_URI:latest  
   post_build:
     commands:
+      - echo list
+      - ls -l
       - echo Updating task definition...
       - awk '{gsub(/<IMAGE_PLACEHOLDER>/, "176991310202.dkr.ecr.us-east-1.amazonaws.com/simple-node-app:latest"); print}' taskdef.json > taskdef.tmp && mv taskdef.tmp taskdef.json
       - aws ecs register-task-definition --cli-input-json file://taskdef.json
