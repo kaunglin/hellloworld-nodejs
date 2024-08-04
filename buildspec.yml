@@ -33,7 +33,7 @@ phases:
       - echo list
       - ls -l
       - echo Updating task definition...
-      - aws ecs describe-task-definition --task-definition simple-nodea-app --region ap-southeast-1 | jq .taskDefinition > taskdef.json
+      - aws ecs describe-task-definition --task-definition simple-node-app --region ap-southeast-1 | jq .taskDefinition > taskdef.json
       - echo $TASK_DEFINITION
 artifacts:
   files:
