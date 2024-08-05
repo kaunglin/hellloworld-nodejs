@@ -7,3 +7,7 @@ Resources:
         LoadBalancerInfo:
           ContainerName: "rida-service-staging"
           ContainerPort: 80
+        NetworkConfiguration:
+          AwsvpcConfiguration:
+            Subnets: ["subnet-0cc270badc033b533","subnet-0d011b5f18eec5b11"]
+            SecurityGroups: ["sg-053967f6b34611030"]
