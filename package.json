@@ -1,0 +1,118 @@
+{
+  "name": "rida-graphql",
+  "version": "1.0.0",
+  "description": "for rida graphql API",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard --verbose | snazzy",
+    "lint-fix": "standard --fix | snazzy",
+    "dev": "NODE_ENV=development nodemon --exec babel-node ./src/index.js",
+    "start": "npx prisma introspect && npx prisma generate && node ./src/index.js",
+    "precommit": "lint-staged",
+    "prettier": "prettier --no-semi --single-quote --write '**/*.js'",
+    "prettierFix": "prettier --no-semi --single-quote --write '**/*.js'",
+    "test": "jest --coverage && codecov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Plateable/rida-graphql.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Plateable/rida-graphql/issues"
+  },
+  "homepage": "https://github.com/Plateable/rida-graphql#readme",
+  "dependencies": {
+    "@apollo/client": "^3.0.2",
+    "@googlemaps/google-maps-services-js": "^2.6.1",
+    "@sendgrid/mail": "^7.4.0",
+    "@turf/turf": "^7.0.0",
+    "apollo-server-express": "^2.13.1",
+    "aws-sdk": "^2.774.0",
+    "axios": "^0.19.2",
+    "babel-plugin-wildcard": "^6.0.0",
+    "base64-stream": "^1.0.0",
+    "bluebird": "^3.7.2",
+    "bwip-js": "^3.4.0",
+    "codecov": "^3.6.5",
+    "consola": "^2.12.1",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.1.3",
+    "firebase": "8.9.1",
+    "firebase-admin": "^8.12.1",
+    "graphql": "^15.0.0",
+    "graphql-depth-limit": "^1.1.0",
+    "graphql-rate-limit-directive": "^1.2.1",
+    "helmet": "^3.22.0",
+    "ioredis": "^4.28.2",
+    "lalamove-js": "^1.0.0",
+    "libphonenumber-js": "^1.9.36",
+    "lodash": "^4.17.21",
+    "module-alias": "^2.2.2",
+    "moment-timezone": "^0.5.31",
+    "mongodb": "^3.6.3",
+    "pdfkit-table": "^0.1.99",
+    "pusher": "^5.1.0-beta",
+    "qs": "^6.11.1",
+    "redlock": "^5.0.0-beta.2",
+    "sharp": "^0.30.7",
+    "stripe": "^8.114.0",
+    "twilio": "^3.49.4",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/runtime": "^7.9.2",
+    "@prisma/client": "^2.22.0",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "husky": "^4.2.1",
+    "jest": "^25.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "lint-staged": "^10.0.7",
+    "nodemon": "^2.0.3",
+    "prettier": "^2.0.4",
+    "prisma": "^2.22.0",
+    "snazzy": "^8.0.0",
+    "standard": "^14.3.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run prettier",
+      "git add"
+    ]
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  },
+  "jest": {
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true,
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/controllers/*.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0
+      }
+    }
+  },
+  "_moduleAliases": {
+    "~/generated": "./generated",
+    "~": "./src",
+    "@": "./src"
+  }
+}
